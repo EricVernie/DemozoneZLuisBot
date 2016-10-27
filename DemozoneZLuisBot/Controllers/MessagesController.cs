@@ -23,7 +23,7 @@ namespace DemozoneZLuisBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new EchoPromptDialog());
+                await Conversation.SendAsync(activity, () => new CardsDialog());
             }
             else
             {
