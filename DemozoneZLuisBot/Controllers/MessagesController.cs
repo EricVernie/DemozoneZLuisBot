@@ -12,7 +12,7 @@ using DemozoneZLuisBot.Dialogs;
 
 namespace DemozoneZLuisBot
 {
-    [BotAuthentication]
+   // [BotAuthentication]
     public class MessagesController : ApiController
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace DemozoneZLuisBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                await Conversation.SendAsync(activity, () => new EchoDialog());
+                await Conversation.SendAsync(activity, () => new EchoPromptDialog());
             }
             else
             {
