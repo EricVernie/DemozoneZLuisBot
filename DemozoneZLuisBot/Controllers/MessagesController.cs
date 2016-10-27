@@ -21,14 +21,23 @@ namespace DemozoneZLuisBot
         /// </summary>
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
         {
-            if (activity.Type == ActivityTypes.Message)
+            try
             {
-                await Conversation.SendAsync(activity, ()=> new RootDialog());
+                if (activity.Type == ActivityTypes.Message)
+                {
+                    await Conversation.SendAsync(activity, () => new LuisRootDialog());
+                }
+                else
+                {
+                    HandleSystemMessage(activity);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                HandleSystemMessage(activity);
+
+                var e = ex.Message;
             }
+           
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
