@@ -7,12 +7,19 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Microsoft.Bot.Connector;
 using Newtonsoft.Json;
+using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.FormFlow;
+using DemozoneZLuisBot.Flow;
 
 namespace DemozoneZLuisBot
 {
-    [BotAuthentication]
+   // [BotAuthentication]
     public class MessagesController : ApiController
     {
+        internal static IDialog<SimpleFormFlow> MakeRootDialog()
+        {
+            return Chain.From(() => FormDialog.FromForm(SimpleFormFlow.BuildSimpleFlowForm));
+        }
         /// <summary>
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
@@ -21,13 +28,7 @@ namespace DemozoneZLuisBot
         {
             if (activity.Type == ActivityTypes.Message)
             {
-                ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
-
-                // return our reply to the user
-                Activity reply = activity.CreateReply($"You said: {activity.Text} which was {length} characters");
-                await connector.Conversations.ReplyToActivityAsync(reply);
+                await Conversation.SendAsync(activity, MakeRootDialog);
             }
             else
             {
