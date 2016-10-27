@@ -12,8 +12,7 @@ using System.Text;
 
 namespace DemozoneZLuisBot.Dialogs
 {
-    [Serializable]
-    //[LuisModel("f9e34d22-d88d-4e5b-99b0-f0589c9671a0", "3cea665036ba4a5a92f0026694e70c7c")]    
+    [Serializable]    
     [LuisModel("eb5fee16-6e98-4d4f-ab18-f6b835ca237f", "3cea665036ba4a5a92f0026694e70c7c")]        
     public class LuisRootDialog : LuisDialog<object>
     {
@@ -26,7 +25,7 @@ namespace DemozoneZLuisBot.Dialogs
         }
 
 
-        [LuisIntent("ChercherFichiers")]
+        [LuisIntent("[VOTRE INTENTION]")]
         public async Task Search(IDialogContext context, IAwaitable<IMessageActivity> activity, LuisResult result)
         {
 
