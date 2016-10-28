@@ -14,7 +14,7 @@ namespace DemozoneZLuisBot.Controllers
         public async Task<string> Get([FromBody]string Jour)
         {
             
-            return "Bonjour " + "Jour";
+            return "Bonjour " + Jour;
         }
     }
 }
