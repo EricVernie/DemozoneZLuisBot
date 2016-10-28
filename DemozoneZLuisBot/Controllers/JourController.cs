@@ -8,13 +8,13 @@ using System.Web.Http;
 
 namespace DemozoneZLuisBot.Controllers
 {
-    public class DateController : ApiController
+    public class JourController : ApiController
     {
         [HttpGet]
         public async Task<string> Get([FromBody]string Jour)
         {
             
-            return "Bonjour";
+            return "Bonjour " + "Jour";
         }
     }
 }
