@@ -11,7 +11,7 @@ namespace DemozoneZLuisBot.Controllers
     public class JourController : ApiController
     {
         [HttpGet]
-        public async Task<string> Get([FromBody]string Jour)
+        public async Task<string> Get(string Jour)
         {
             
             return "Bonjour " + Jour;
