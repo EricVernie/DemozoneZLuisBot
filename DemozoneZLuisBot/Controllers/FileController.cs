@@ -8,13 +8,13 @@ using System.Web.Http;
 
 namespace DemozoneZLuisBot.Controllers
 {
-    public class JourController : ApiController
+    public class FileController : ApiController
     {
         [HttpGet]
-        public async Task<string> Get(string Jour)
+        public async Task<string> Get(string typeFile)
         {
             
-            return "Bonjour " + Jour;
+            return "Tous les fichiers " + typeFile;
         }
     }
 }
